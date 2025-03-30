@@ -7,7 +7,12 @@ local enabled = {
   -- kitty use ibus, no program name
   -- https://github.com/fcitx/fcitx5/blob/00c340afa2a6d4c8808c8c4eb7da0a339edf67f2/src/frontend/ibusfrontend/ibusfrontend.cpp#L728
   [''] = true,
+  ['alacritty'] = true,
+  ['ghostty'] = true,
+  ['wezterm-gui'] = true,
 }
+
+---@diagnostic disable-next-line: lowercase-global
 function wrap_bracketed_mode(str)
   -- TODO: filter?
   if not enabled[fcitx.currentProgram()] or str:match('^\x1b') then return end -- ignore unexpected escape sequence
